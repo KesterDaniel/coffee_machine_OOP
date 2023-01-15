@@ -16,5 +16,8 @@ while machine_on:
     elif user_input == "off":
         machine_on = False
     else:
-        user_order = menu.find_drink(user_input)
-        
+        order_item = menu.find_drink(user_input)
+        if order_item is not None:
+            drink_available = coffee.is_resource_sufficient(order_item)
+            print(drink_available)
+
