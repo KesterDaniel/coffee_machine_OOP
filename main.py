@@ -6,6 +6,7 @@ from money_machine import MoneyMachine
 
 coffee = CoffeeMaker()
 menu = Menu()
+payment = MoneyMachine()
 
 machine_on = True
 
@@ -19,5 +20,8 @@ while machine_on:
         order_item = menu.find_drink(user_input)
         if order_item is not None:
             drink_available = coffee.is_resource_sufficient(order_item)
-            print(drink_available)
+            if drink_available:
+                payment = round(payment.process_coins(), 2)
+                print(payment)
+
 
